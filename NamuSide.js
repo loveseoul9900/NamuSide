@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NamuSide
 // @namespace    http://tampermonkey.net/
-// @version      2024-06-08-2
+// @version      2024-06-08-3
 // @description        NamuSide blocks the side Navagation Bar on NamuWiki.
 // @description:ko     NamuSide는 나무위키의 사이드바를 제거합니다
 // @author       loveseoul9900
@@ -18,4 +18,4 @@
 // @updateURL https://update.greasyfork.org/scripts/497290/NamuSide.meta.js
 // ==/UserScript==
 
-(function(){function a(){var b=document.getElementsByTagName("ul"),c=[],d=[];for(var e=0;e<b.length;e++){var f=b[e],g=f.getElementsByTagName("li").length;if(10===g){var h=f.parentNode.parentNode;c.push(h)}else 5===g&&(h=f.parentNode.parentNode,d.push(h))}var i=[];for(var j=0;j<c.length;j++){var k=c[j];-1!==d.indexOf(k)&&i.push(k)}i.length>0&&i.forEach(function(a){a.classList.length>1&&a.remove()})}const b=document.body,c={childList:!0,subtree:!0},d=function(b,d){for(const e of b)"childList"===e.type&&a()};new MutationObserver(d).observe(b,c),a()})();
+function compx() {var a=document.getElementsByTagName("ul"),b=[],c=[],d=0,e=0,f=[];for(d=0;d<a.length;d++){var g=a[d],h=g.getElementsByTagName("li").length;if(10===h){var i=g.parentNode.parentNode;b.push(i)}else 5===h&&(i=g.parentNode.parentNode,c.push(i))}for(d=0;d<b.length;d++){var j=b[d];-1!==c.indexOf(j)&&f.push(j)}f.length>0&&f.forEach(function(a){1<a.classList.length&&a.remove()})}const targetNode=document.body,config={childList:!0,subtree:!0},callback=function(a,b){for(const c of a)"childList"===c.type&&compx()};new MutationObserver(callback).observe(targetNode,config),compx();
